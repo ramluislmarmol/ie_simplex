@@ -6,7 +6,6 @@ import sympy as sp
 M = sp.Symbol('M')
 
 # Functions starts here
-
 def create_vector(index, size, type = 'slack'):
     if type == 'artificial':
         vector = np.array([[M]])
@@ -151,7 +150,6 @@ def print_tableau(tableau, var_x, var_y):
     sp.pprint(tableau_df)
 
 # Main Loop starts here
-
 A = np.array([
     [ -3, -5 ],
     [  1,  0 ],
