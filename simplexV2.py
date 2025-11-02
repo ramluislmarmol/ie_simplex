@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import sympy as sp
+from fractions import Fraction
 
 # Define big M
 M = sp.Symbol('M')
@@ -66,7 +67,6 @@ def create_initial_tableau(A, eq, b):
             initial_tableau = np.append(initial_tableau, vector_to_append, axis = 1)
 
             var_x = np.append(var_x, [f"s{s}"])
-            var_y = np.append(var_y, [f"s{s}"])
             s += 1
 
     var_x = np.append(var_x, ['RHS'])
@@ -180,6 +180,8 @@ creation_result = create_initial_tableau(A, eq, b)
 var_x = creation_result['var_x']
 var_y = creation_result['var_y']
 tableau = creation_result['initial_tableau']
+
+tableau = tableau + Fraction()
 
 print("[Initial Tableau]")
 print_tableau(tableau, var_x, var_y)
