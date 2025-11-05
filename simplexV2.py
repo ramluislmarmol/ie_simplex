@@ -167,7 +167,7 @@ def select_pivot_row_idx(tableau, pivot_col_idx):
 def update_tableau(tableau, pivot_col_idx, pivot_row_idx):
     # Step 1: Turn the pivot element to 1
     pivot_element = tableau[pivot_row_idx][pivot_col_idx]
-    pivot_row = tableau[pivot_row_idx].copy
+    pivot_row = tableau[pivot_row_idx].copy()
     tableau[pivot_row_idx] = (Fraction(1) / pivot_element) * pivot_row
 
     # Step 2: Turn the rest of the column to 0
@@ -188,7 +188,7 @@ def update_tableau(tableau, pivot_col_idx, pivot_row_idx):
 # --- [Function 7]: Validate if objective function has no more negatives
 def check(tableau):
     # Loop through each element in objective function
-    for element in tableau[0]:
+    for element in tableau[0, 0:-1]:
         if element < 0: # If there is < 0, return True
             return True
 
@@ -247,15 +247,15 @@ def optimize(A, eq, b):
 
 # ====================== End of Module ======================
 A = np.array([
-    [ -2, -1 ],
-    [  3,  1 ],
-    [  1,  2 ]
+    [ 3, 2, 7 ],
+    [-1, 1, 0 ],
+    [ 2,-1, 1 ]
 ])
 
 eq = np.array([
     [ 0 ],
-    [ 1 ],
-    [ 1 ]
+    [ 2 ],
+    [ 3 ]
 ])
 
 # 0 is for objective functions
@@ -264,9 +264,9 @@ eq = np.array([
 # 3 is >=
 
 b = np.array([
-    [ 0 ],
-    [ 7 ],
-    [ 9 ]
+    [  0 ],
+    [ 10 ],
+    [ 10 ]
 ])
 
 optimize(A, eq, b)
